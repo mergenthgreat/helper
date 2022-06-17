@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+	"net/http"
 	"os"
 
 	"github.com/bwmarrin/discordgo"
@@ -36,7 +38,7 @@ func main() {
 		fmt.Println(err.Error())
 		return
 	}
-
+	log.Fatal(http.ListenAndServe(":8080", nil))
 	fmt.Println("Bot is now running. Press CTRL-C to exit.")
 	sc := make(chan os.Signal, 1)
 	<-sc
